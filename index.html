@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinux Playbook // Zero Latency Engine</title>
+    <!-- Tailwind CSS ve Fontlar -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.4s, color 0.4s; }
+        .glass { backdrop-filter: blur(16px); }
+    </style>
+</head>
+<body class="bg-[#0b0c10] text-[#f3f4f6] relative overflow-x-hidden selection:bg-purple-500/30 dark:bg-[#0b0c10] dark:text-[#f3f4f6] light:bg-[#fafafa] light:text-[#1f2937]">
+
+    <!-- Arka Plandaki Soft Küreler (AtlasOS Style Soft Gradients) -->
+    <div class="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full bg-purple-400/5 blur-[130px] pointer-events-none"></div>
+    <div class="absolute top-[30%] right-[-10%] w-[700px] h-[700px] rounded-full bg-cyan-400/5 blur-[160px] pointer-events-none"></div>
+    <div class="absolute bottom-[10%] left-[15%] w-[500px] h-[500px] rounded-full bg-pink-400/5 blur-[140px] pointer-events-none"></div>
+
+    <!-- ÜST MENÜ (Navbar) -->
+    <header class="sticky top-0 z-50 max-w-7xl mx-auto px-6 py-5">
+        <nav class="flex items-center justify-between border border-white/5 bg-[#121214]/40 glass px-6 py-3.5 rounded-2xl shadow-xl dark:bg-[#121214]/40 dark:border-white/5 light:bg-white/40 light:border-black/5 shadow-black/5">
+            <div class="text-lg font-bold tracking-tight text-neutral-800 dark:text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+                KINUX<span class="text-xs font-normal opacity-50 font-mono">.pb</span>
+            </div>
+            <div class="flex items-center gap-6">
+                <!-- Dark / Light Mode Butonu -->
+                <button id="theme-toggle" class="p-2.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 active:scale-95 transition cursor-pointer dark:border-white/5 dark:bg-white/5 light:border-black/5 light:bg-black/5 light:hover:bg-black/10">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4.5 h-4.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                </button>
+                <a href="#" class="px-5 py-2 bg-neutral-900 text-white dark:bg-white dark:text-black font-medium rounded-xl text-xs hover:opacity-90 active:scale-95 transition shadow-md">Playbook'u Al</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-10 relative z-10">
+        
+        <!-- HERO SECTION -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-12">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/10 bg-purple-500/5 text-xs font-medium text-purple-400">
+                    <span>✨ Formatsız İnce Ayar Teknolojisi</span>
+                </div>
+                <h1 class="text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">
+                    Sisteminizi Hafifletin. <br>
+                    <span class="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">Gecikmeyi Sıfırlayın.</span>
+                </h1>
+                <p class="text-base opacity-70 leading-relaxed max-w-md">
+                    ISO kurma karmaşasına son. Kinux Playbook, mevcut Windows kurulumunuzu bozmadan arka plandaki tüm gereksiz yükleri kaldırır ve sistemi tamamen espor standartlarına optimize eder.
+                </p>
+                <div class="flex items-center gap-4 pt-2">
+                    <a href="#" class="px-7 py-3.5 bg-purple-600 text-white font-semibold rounded-xl shadow-lg shadow-purple-600/10 hover:bg-purple-700 active:scale-95 transition text-sm">Hemen İndir (.apbx)</a>
+                    <a href="#how-it-works" class="px-6 py-3.5 border border-white/5 bg-white/5 rounded-xl font-medium hover:bg-white/10 transition text-sm dark:border-white/5 light:border-black/5 light:bg-black/5 light:hover:bg-black/10">Rehberi Gör</a>
+                </div>
+            </div>
+            
+            <!-- SAĞ TARAF: YENİ SOFT HOŞ GELDİNİZ / DASHBOARD EKRANI -->
+            <div class="border border-white/5 bg-[#121214]/30 glass p-8 rounded-3xl shadow-2xl dark:bg-[#121214]/30 light:bg-white/50 light:border-black/5">
+                <div class="text-center space-y-4 py-6">
+                    <!-- Hoş Geldiniz Logosu -->
+                    <div class="w-16 h-16 bg-gradient-to-tr from-purple-500/10 to-cyan-500/10 border border-purple-500/20 rounded-2xl mx-auto flex items-center justify-center shadow-inner">
+                        <span class="text-xl">💜</span>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">Kinux Engine'e Hoş Geldiniz</h3>
+                        <p class="text-xs opacity-50 font-mono">Sistem Durumu: Optimizasyona Hazır</p>
+                    </div>
+                    
+                    <!-- Soft Durum Çubukları -->
+                    <div class="space-y-3 max-w-xs mx-auto pt-4 text-left">
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs dark:bg-white/5 light:bg-black/5 light:border-black/5">
+                            <span class="opacity-70 font-medium">Giriş Gecikmesi (Latency)</span>
+                            <span class="text-purple-400 font-bold font-mono">-32.4ms Dropped</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs dark:bg-white/5 light:bg-black/5 light:border-black/5">
+                            <span class="opacity-70 font-medium">Gereksiz Servisler</span>
+                            <span class="text-emerald-400 font-bold font-mono">142 Silindi</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs dark:bg-white/5 light:bg-black/5 light:border-black/5">
+                            <span class="opacity-70 font-medium">Ağ Profil Algoritması</span>
+                            <span class="text-cyan-400 font-bold font-mono">TCP BBR Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÖZELLİKLER BÖLÜMÜ (Soft Renkli Bento Grid) -->
+        <section class="py-16 space-y-6">
+            <div class="text-center max-w-sm mx-auto space-y-1">
+                <h2 class="text-2xl font-bold tracking-tight">Kusursuz İnce Ayarlar</h2>
+                <p class="text-xs opacity-50">Sisteminize saniyeler içinde işlenecek premium modüller.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
+                <!-- Kutucuk 1 (Soft Mavi) -->
+                <div class="border border-cyan-500/5 bg-[#121214]/40 glass p-6 rounded-2xl shadow-sm dark:bg-[#121214]/40 light:bg-white/60 light:border-cyan-500/10">
+                    <div class="w-9 h-9 rounded-xl bg-cyan-500/5 flex items-center justify-center text-cyan-400 mb-4 text-sm">⚡</div>
+                    <h3 class="text-md font-semibold text-cyan-400 dark:text-cyan-300 mb-1">Network Core (TCP BBR)</h3>
+                    <p class="text-xs opacity-70 leading-relaxed">Ping dalgalanmalarını ve paket kayıplarını ağ katmanında engeller. Bağlantınızı doğrudan oyun sunucusuna tüneller.</p>
+                </div>
+                <!-- Kutucuk 2 (Soft Mor) -->
+                <div class="border border-purple-500/5 bg-[#121214]/40 glass p-6 rounded-2xl shadow-sm dark:bg-[#121214]/40 light:bg-white/60 light:border-purple-500/10">
+                    <div class="w-9 h-9 rounded-xl bg-purple-500/5 flex items-center justify-center text-purple-400 mb-4 text-sm">🎯</div>
+                    <h3 class="text-md font-semibold text-purple-400 dark:text-purple-300 mb-1">Input Lag Killer</h3>
+                    <p class="text-xs opacity-70 leading-relaxed">Klavye ve fare donanım kesmelerini doğrudan işlemcinin en hızlı çekirdeklerine bağlar. Girdi gecikmesini yok eder.</p>
+                </div>
+                <!-- Kutucuk 3 (Soft Yeşil) -->
+                <div class="border border-emerald-500/5 bg-[#121214]/40 glass p-6 rounded-2xl shadow-sm dark:bg-[#121214]/40 light:bg-white/60 light:border-emerald-500/10">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-500/5 flex items-center justify-center text-emerald-400 mb-4 text-sm">🍃</div>
+                    <h3 class="text-md font-semibold text-emerald-400 dark:text-emerald-300 mb-1">Bloatware Stripper</h3>
+                    <p class="text-xs opacity-70 leading-relaxed">Windows'un arkada çalışan, RAM ve işlemci önbelleğini işgal eden yüzlerce gereksiz telemetri servisini temizler.</p>
+                </div>
+                <!-- Kutucuk 4 (Soft Pembe) -->
+                <div class="border border-pink-500/5 bg-[#121214]/40 glass p-6 rounded-2xl shadow-sm md:col-span-2 lg:col-span-3 dark:bg-[#121214]/40 light:bg-white/60 light:border-pink-500/10">
+                    <div class="w-9 h-9 rounded-xl bg-pink-500/5 flex items-center justify-center text-pink-400 mb-4 text-sm">🚀</div>
+                    <h3 class="text-md font-semibold text-pink-400 dark:text-pink-300 mb-1">Anti-Stutter & Drop Engine</h3>
+                    <p class="text-xs opacity-70 leading-relaxed">Aksiyon anlarında anlık FPS düşüşlerini engellemek için %1 ve %0.1 low FPS değerlerini stabilize eder. Bilgisayarınızın kaynak yönetimini tamamen optimize ederek pürüzsüz bir akış sağlar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KİMLERE HİTAP EDİYOR -->
+        <section class="py-12 space-y-6">
+            <div class="text-center max-w-sm mx-auto space-y-1">
+                <h2 class="text-2xl font-bold tracking-tight">Kimin İçin Tasarlandı?</h2>
+                <p class="text-xs opacity-50">Kinux Playbook hangi sorunları kökten çözer?</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                <div class="border border-white/5 bg-[#121214]/20 glass p-5 rounded-2xl dark:bg-[#121214]/20 light:bg-white/30 light:border-black/5">
+                    <h4 class="text-sm font-bold mb-1.5">🏆 Rekabetçi Oyuncular</h4>
+                    <p class="text-xs opacity-60 leading-relaxed">CS2, Valorant, Minecraft veya Roblox (Sober) gibi milisaniyelerin önemli olduğu arenalarda en kararlı tepki süresini isteyenler için.</p>
+                </div>
+                <div class="border border-white/5 bg-[#121214]/20 glass p-5 rounded-2xl dark:bg-[#121214]/20 light:bg-white/30 light:border-black/5">
+                    <h4 class="text-sm font-bold mb-1.5">💻 Sistem Verimliliği</h4>
+                    <p class="text-xs opacity-60 leading-relaxed">Arka plan taramaları ve Windows Defender'ın ağır disk yazma kilitleri yüzünden drop yiyen orta/düşük sistemli cihazlar için.</p>
+                </div>
+                <div class="border border-white/5 bg-[#121214]/20 glass p-5 rounded-2xl dark:bg-[#121214]/20 light:bg-white/30 light:border-black/5">
+                    <h4 class="text-sm font-bold mb-1.5">⚡ Sade ve Temiz Deneyim</h4>
+                    <p class="text-xs opacity-60 leading-relaxed">Sisteminde hiçbir gözetleme yazılımı, reklam veya gereksiz Xbox servisleri istemeyen, sadelik yanlısı kullanıcılar için.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NASIL KURULUR -->
+        <section id="how-it-works" class="py-12 border-t border-white/5 light:border-black/5">
+            <div class="max-w-xl mx-auto space-y-8">
+                <div class="text-center space-y-1">
+                    <h2 class="text-2xl font-bold tracking-tight">3 Adımda Kolay Kurulum</h2>
+                    <p class="text-xs opacity-50">Saniyeler içinde hazır hale getirin.</p>
+                </div>
+                <div class="space-y-5 font-medium">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-7 h-7 rounded-lg bg-purple-500/10 text-purple-400 text-xs font-bold flex items-center justify-center shrink-0">1</div>
+                        <div>
+                            <h5 class="text-xs font-semibold">Playbook Dosyasını İndirin</h5>
+                            <p class="text-xs opacity-60 mt-0.5">Sitemizde yer alan .apbx uzantılı güvenli yapılandırma paketini edinin.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-7 h-7 rounded-lg bg-cyan-500/10 text-cyan-400 text-xs font-bold flex items-center justify-center shrink-0">2</div>
+                        <div>
+                            <h5 class="text-xs font-semibold">Ameen / AME Wizard ile Başlatın</h5>
+                            <p class="text-xs opacity-60 mt-0.5">Sihirbaz arayüzünden playbook dosyamızı seçerek profili tek tıkla uygulayın.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-7 h-7 rounded-lg bg-pink-500/10 text-pink-400 text-xs font-bold flex items-center justify-center shrink-0">3</div>
+                        <div>
+                            <h5 class="text-xs font-semibold">Sistemi Yeniden Başlatın</h5>
+                            <p class="text-xs opacity-60 mt-0.5">Yeniden açılışta tüm gereksiz yüklerden arınmış saf espor motorunun tadını çıkarın.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-6 py-8 border-t border-white/5 text-center text-xs opacity-40 light:border-black/5">
+        &copy; 2026 Kinux Project. Crafted for elite gaming performance.
+    </footer>
+
+    <!-- Dark / Light Mode Switch JavaScript Kodu -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.22 4.22l1.58 1.58m12.42 12.42l1.58 1.58M3 12h2.25m13.5 0H21M4.22 19.78l1.58-1.58M17.66 6.34l1.58-1.58M12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z" />`;
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />`;
+            }
+        });
+    </script>
+</body>
+</html>
