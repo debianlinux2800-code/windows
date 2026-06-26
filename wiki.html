@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinux Playbook // Zero Latency Engine</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.5s, color 0.5s; }
+        .glass { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+        .cyber-btn { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .cyber-btn:hover { transform: translateY(-3px); }
+        .soft-glow { box-shadow: 0 0 40px -10px rgba(168, 85, 247, 0.15); }
+    </style>
+</head>
+<body class="bg-[#08090c] text-[#f3f4f6] relative overflow-x-hidden selection:bg-purple-500/30">
+
+    <!-- Yumuşatılmış Arka Plan Işıkları (Soft Blur Overlays) -->
+    <div class="absolute top-[-10%] left-[-5%] w-[700px] h-[700px] rounded-full bg-purple-500/4 blur-[150px] pointer-events-none"></div>
+    <div class="absolute top-[25%] right-[-10%] w-[800px] h-[800px] rounded-full bg-cyan-500/4 blur-[180px] pointer-events-none"></div>
+    <div class="absolute bottom-[20%] left-[10%] w-[600px] h-[600px] rounded-full bg-pink-500/3 blur-[160px] pointer-events-none"></div>
+
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-50 max-w-7xl mx-auto px-6 py-5">
+        <nav class="flex items-center justify-between border border-white/5 bg-[#0e1117]/50 glass px-6 py-4 rounded-2xl shadow-2xl shadow-black/20">
+            <div class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.5)]"></span>
+                KINUX<span class="text-xs font-normal opacity-50 font-mono">.pb</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <!-- Dil Seçimi Butonu -->
+                <button id="lang-toggle" class="px-3 py-1.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-xs font-semibold font-mono tracking-wider transition cursor-pointer">
+                    EN
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition cursor-pointer">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4.5 h-4.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                </button>
+                <a href="https://t.me/kinuxproject" target="_blank" id="nav-cta" class="px-5 py-2 bg-white text-black font-semibold rounded-xl text-xs hover:opacity-90 transition shadow-md">İletişime Geç</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-6 relative z-10">
+        
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/20 bg-purple-500/10 text-xs font-medium text-purple-300">
+                    <span id="badge-text">✨ Formatsız İnce Ayar Teknolojisi</span>
+                </div>
+                <h1 id="hero-title" class="text-4xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Sisteminizi Hafifletin. <br>
+                    <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">Gecikmeyi Sıfırlayın.</span>
+                </h1>
+                <p id="hero-desc" class="text-base opacity-70 leading-relaxed max-w-md">
+                    ISO kurma veya veri kaybetme riskine son. Kinux Playbook, mevcut Windows kurulumunuzu bozmadan arka plandaki tüm hantal yükleri kaldırır ve sistemi espor standartlarına çeker.
+                </p>
+                
+                <!-- Yeni 143 TL Fiyat Kutusu -->
+                <div class="pt-2 space-y-4 max-w-md">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 shadow-xl soft-glow">
+                        <div class="space-y-0.5">
+                            <span id="price-label" class="text-[10px] font-bold tracking-widest text-emerald-400 uppercase block">ÖMÜR BOYU LİSANS & GÜNCELLEMELER</span>
+                            <div class="flex items-center gap-2">
+                                <span id="price-old" class="text-xs line-through opacity-40 font-mono">350 TL</span>
+                                <span id="price-new" class="text-xl font-black font-mono text-white bg-emerald-600/80 px-2.5 py-1 rounded-lg border border-emerald-400/20 shadow-md">143 TL / $5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p id="links-title" class="text-[11px] font-mono tracking-wider opacity-40 uppercase">PROJE BAĞLANTILARI & SATIN ALMA</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <a href="https://t.me/kinuxproject" target="_blank" class="cyber-btn flex items-center justify-between p-4 rounded-xl border border-purple-500/10 bg-purple-500/5 hover:bg-purple-500/10 hover:border-purple-500/30">
+                            <div class="text-left">
+                                <div class="text-xs font-bold tracking-wide text-purple-400">TELEGRAM SUPPORT</div>
+                                <div class="text-[11px] opacity-50 font-mono mt-0.5">@kinuxproject</div>
+                            </div>
+                            <span class="text-sm opacity-60">➡️</span>
+                        </a>
+                        <a href="https://t.me/kinuxprojectgroup" target="_blank" class="cyber-btn flex items-center justify-between p-4 rounded-xl border border-cyan-500/10 bg-cyan-500/5 hover:bg-cyan-500/10 hover:border-cyan-500/30">
+                            <div class="text-left">
+                                <div class="text-xs font-bold tracking-wide text-cyan-400">TELEGRAM COMMUNITY</div>
+                                <div class="text-[11px] opacity-50 font-mono mt-0.5">@kinuxprojectgroup</div>
+                            </div>
+                            <span class="text-sm opacity-60">➡️</span>
+                        </a>
+                    </div>
+                    <a href="https://instagram.com/kinuxproject" target="_blank" class="cyber-btn flex items-center justify-between p-4 rounded-xl border border-pink-500/10 bg-pink-500/5 hover:bg-pink-500/10 hover:border-pink-500/30">
+                        <div class="text-left">
+                            <div class="text-xs font-bold tracking-wide text-pink-400">INSTAGRAM</div>
+                            <div class="text-[11px] opacity-50 font-mono mt-0.5">@kinuxproject</div>
+                        </div>
+                        <span class="text-sm opacity-60">➡️</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sağ Taraf Canlı Gösterge Paneli -->
+            <div class="border border-white/5 bg-[#0e1117]/30 glass p-8 rounded-3xl shadow-2xl relative">
+                <div class="absolute -top-3 -right-3 px-3 py-1 bg-purple-600 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider animate-bounce">LIVE ENGINE</div>
+                <div class="text-center space-y-5 py-4">
+                    <div class="w-14 h-14 bg-gradient-to-tr from-purple-500/20 to-cyan-500/20 border border-purple-500/30 rounded-2xl mx-auto flex items-center justify-center shadow-lg">
+                        <span class="text-xl">📊</span>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 id="panel-title" class="text-lg font-bold tracking-tight text-white">Sistem Durumu Akışı</h3>
+                        <p id="panel-status" class="text-[11px] opacity-50 font-mono text-emerald-400">● Optimizasyona Tamamen Hazır</p>
+                    </div>
+                    <div class="space-y-2.5 max-w-xs mx-auto pt-2 text-left">
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
+                            <span id="stat-1" class="opacity-70 font-medium">Giriş Gecikmesi (Latency)</span>
+                            <span class="text-purple-400 font-bold font-mono">-32.4ms Dropped</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
+                            <span id="stat-2" class="opacity-70 font-medium">Gereksiz Servisler</span>
+                            <span class="text-emerald-400 font-bold font-mono">142 Bloatware OFF</span>
+                        </div>
+                        <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
+                            <span id="stat-3" class="opacity-70 font-medium">Ağ Algoritması / UDP</span>
+                            <span class="text-cyan-400 font-bold font-mono">CTCP / Ultra Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- YENİ BÖLÜM: Bizim Farkımız Ne? -->
+        <section class="py-16 border-t border-white/5">
+            <div class="text-center max-w-md mx-auto space-y-2 mb-12">
+                <h2 id="diff-title" class="text-3xl font-extrabold tracking-tight">Bizim Farkımız Nedir?</h2>
+                <p id="diff-subtitle" class="text-xs opacity-50">Neden hantal özel ISO'lar yerine Kinux Engine tercih etmelisiniz?</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 rounded-2xl border border-purple-500/10 bg-purple-500/5 space-y-3">
+                    <div class="text-xl">🔒</div>
+                    <h4 id="diff-1-title" class="text-sm font-bold text-purple-300">Sıfır Güvenlik Riski</h4>
+                    <p id="diff-1-desc" class="text-xs opacity-60 leading-relaxed">Modifiye edilmiş hazır ISO'lar gibi arka planda ne olduğu belirsiz dosyalar içermez. Tamamen Windows tabanlı ve şeffaftır.</p>
+                </div>
+                <div class="p-6 rounded-2xl border border-cyan-500/10 bg-cyan-500/5 space-y-3">
+                    <div class="text-xl">🛠️</div>
+                    <h4 id="diff-2-title" class="text-sm font-bold text-cyan-300">Formatsız & Geri Alınabilir</h4>
+                    <p id="diff-2-desc" class="text-xs opacity-60 leading-relaxed">Sisteminize format atmanıza, oyunları baştan yüklemenize gerek kalmaz. Saniyeler içinde enjekte edilir ve sisteminizi bozmaz.</p>
+                </div>
+                <div class="p-6 rounded-2xl border border-pink-500/10 bg-pink-500/5 space-y-3">
+                    <div class="text-xl">🎮</div>
+                    <h4 id="diff-3-title" class="text-sm font-bold text-pink-300">Doğrudan Espor Odaklı</h4>
+                    <p id="diff-3-desc" class="text-xs opacity-60 leading-relaxed">Sıradan temizlik araçları gibi sadece çöp silmez; UDP paket akışını, kernel kesme zamanlamasını (DPC) ve donanım gecikmesini doğrudan optimize eder.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Özellikler Modülleri -->
+        <section class="py-12 space-y-6">
+            <div class="text-center max-w-sm mx-auto space-y-1">
+                <h2 id="features-title" class="text-2xl font-bold tracking-tight">Kusursuz Premium Modüller</h2>
+                <p id="features-subtitle" class="text-xs opacity-50">Sisteminize enjekte edilecek canavar tweakler.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+                <div class="border border-white/5 bg-[#0e1117]/40 glass p-6 rounded-2xl shadow-sm">
+                    <div class="w-9 h-9 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4 text-xs font-mono font-bold">01</div>
+                    <h3 id="f1-title" class="text-md font-semibold text-cyan-300 mb-1">Network Core & UDP Killer</h3>
+                    <p id="f1-slogan" class="text-[10px] uppercase font-mono font-bold tracking-wider text-cyan-400/80 mb-2">"Mermiler Milisaniyesinde Kayıt Olsun"</p>
+                    <p id="f1-desc" class="text-xs opacity-70 leading-relaxed">TCP Nagle algoritmasını öldürür, CTCP tıkanıklık kontrolünü açar ve UDP buffer sınırlarını genişleterek oyun içi ping zıplamalarını ve packet loss'u sıfırlar.</p>
+                </div>
+                <div class="border border-white/5 bg-[#0e1117]/40 glass p-6 rounded-2xl shadow-sm">
+                    <div class="w-9 h-9 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-4 text-xs font-mono font-bold">02</div>
+                    <h3 id="f2-title" class="text-md font-semibold text-purple-300 mb-1">DPC Latency & Input Lag Engine</h3>
+                    <p id="f2-slogan" class="text-[10px] uppercase font-mono font-bold tracking-wider text-purple-400/80 mb-2">"Fare İmleci Elinin Altında Akıp Gitsin"</p>
+                    <p id="f2-desc" class="text-xs opacity-70 leading-relaxed">Klavye/fare gecikmelerini ve donanımsal kesme sürelerini (DPC) minimize eder. İşlemci zamanlayıcısını (HPET iptali) espor standartlarına zorlar.</p>
+                </div>
+                <div class="border border-white/5 bg-[#0e1117]/40 glass p-6 rounded-2xl shadow-sm">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 text-xs font-mono font-bold">03</div>
+                    <h3 id="f3-title" class="text-md font-semibold text-emerald-300 mb-1">Kernel Memory & RAM Arındırıcı</h3>
+                    <p id="f3-slogan" class="text-[10px] uppercase font-mono font-bold tracking-wider text-emerald-400/80 mb-2">"Windows Arka Planda RAM Çalmasın"</p>
+                    <p id="f3-desc" class="text-xs opacity-70 leading-relaxed">Windows'un hantal disk sayfalama (Pagefile) mekanizmasını RAM için durdurur. Bellekteki standby listelerini otomatik süpürerek oyuna maksimum alan açar.</p>
+                </div>
+                <div class="border border-white/5 bg-[#0e1117]/40 glass p-6 rounded-2xl shadow-sm md:col-span-2 lg:col-span-3">
+                    <div class="w-9 h-9 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 mb-4 text-xs font-mono font-bold">04</div>
+                    <h3 id="f4-title" class="text-md font-semibold text-pink-300 mb-1">Anti-Stutter & Core Parking Defeater</h3>
+                    <p id="f4-slogan" class="text-[10px] uppercase font-mono font-bold tracking-wider text-pink-400/80 mb-2">"Aksiyon Sahnelerinde Anlık Droplara Elveda"</p>
+                    <p id="f4-desc" class="text-xs opacity-70 leading-relaxed">Aksiyon esnasında işlemci çekirdeklerinin uyku moduna (C-State) geçmesini engeller. Tüm çekirdekleri %100 tetikte tutarak %1 ve %0.1 low FPS düşüşlerini tamamen bıçak gibi keser.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hedef Kitle -->
+        <section class="py-12 space-y-6">
+            <div class="text-center max-w-sm mx-auto space-y-1">
+                <h2 id="target-title" class="text-2xl font-bold tracking-tight">Kimin İçin Tasarlandı?</h2>
+                <p id="target-subtitle" class="text-xs opacity-50">Kinux Playbook hangi sorunları kökten çözer?</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                <div class="border border-white/5 bg-[#0e1117]/30 glass p-5 rounded-2xl">
+                    <h4 id="t1-title" class="text-sm font-bold mb-1.5">🏆 Rekabetçi Oyuncular</h4>
+                    <p id="t1-desc" class="text-xs opacity-60 leading-relaxed">CS2, Valorant, Minecraft veya Roblox (Sober) gibi milisaniyelerin ve mermi kayıtlarının kritik olduğu arenalarda en kararlı tepki süresini arayanlar.</p>
+                </div>
+                <div class="border border-white/5 bg-[#0e1117]/30 glass p-5 rounded-2xl">
+                    <h4 id="t2-title" class="text-sm font-bold mb-1.5">💻 Donanım Sınırlarını Zorlayanlar</h4>
+                    <p id="t2-desc" class="text-xs opacity-60 leading-relaxed">Windows Defender'ın ağır disk kilitleri ve arka plan telemetri servisleri yüzünden anlık takılma (stutter) yaşayan tüm sistemler için.</p>
+                </div>
+                <div class="border border-white/5 bg-[#0e1117]/30 glass p-5 rounded-2xl">
+                    <h4 id="t3-title" class="text-sm font-bold mb-1.5">⚡ Saf Performans Tutkunları</h4>
+                    <p id="t3-desc" class="text-xs opacity-60 leading-relaxed">Sisteminde hiçbir reklam, bloatware veya gereksiz arka plan Xbox servisi istemeyen, en temiz Windows deneyimine odaklananlar için.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-6 py-8 border-t border-white/5 text-center text-xs opacity-40">
+        &copy; 2026 Kinux Project. Crafted for elite gaming performance.
+    </footer>
+
+    <!-- Dil Değiştirme Scripti (TR / EN) -->
+    <script>
+        const langToggleBtn = document.getElementById('lang-toggle');
+        let currentLang = 'TR';
+
+        const translations = {
+            TR: {
+                badge: "✨ Formatsız İnce Ayar Teknolojisi",
+                heroTitle: "Sisteminizi Hafifletin. <br><span class='bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent'>Gecikmeyi Sıfırlayın.</span>",
+                heroDesc: "ISO kurma veya veri kaybetme riskine son. Kinux Playbook, mevcut Windows kurulumunuzu bozmadan arka plandaki tüm hantal yükleri kaldırır ve sistemi espor standartlarına çeker.",
+                priceLabel: "ÖMÜR BOYU LİSANS & GÜNCELLEMELER",
+                linksTitle: "PROJE BAĞLANTILARI & SATIN ALMA",
+                panelTitle: "Sistem Durumu Akışı",
+                panelStatus: "● Optimizasyona Tamamen Hazır",
+                stat1: "Giriş Gecikmesi (Latency)",
+                stat2: "Gereksiz Servisler",
+                stat3: "Ağ Algoritması / UDP",
+                diffTitle: "Bizim Farkımız Nedir?",
+                diffSubtitle: "Neden hantal özel ISO'lar yerine Kinux Engine tercih etmelisiniz?",
+                diff1Title: "Sıfır Güvenlik Riski",
+                diff1Desc: "Modifiye edilmiş hazır ISO'lar gibi arka planda ne olduğu belirsiz dosyalar içermez. Tamamen Windows tabanlı ve şeffaftır.",
+                diff2Title: "Formatsız & Geri Alınabilir",
+                diff2Desc: "Sisteminize format atmanıza, oyunları baştan yüklemenize gerek kalmaz. Saniyeler içinde enjekte edilir ve sisteminizi bozmaz.",
+                diff3Title: "Doğrudan Espor Odaklı",
+                diff3Desc: "Sıradan temizlik araçları gibi sadece çöp silmez; UDP paket akışını, kernel kesme zamanlamasını (DPC) ve donanım gecikmesini doğrudan optimize eder.",
+                featuresTitle: "Kusursuz Premium Modüller",
+                featuresSubtitle: "Sisteminize enjekte edilecek canavar tweakler.",
+                f1Title: "Network Core & UDP Killer",
+                f1Slogan: '"Mermiler Milisaniyesinde Kayıt Olsun"',
+                f1Desc: "TCP Nagle algoritmasını öldürür, CTCP tıkanıklık kontrolünü açar ve UDP buffer sınırlarını genişleterek oyun içi ping zıplamalarını ve packet loss'u sıfırlar.",
+                f2Title: "DPC Latency & Input Lag Engine",
+                f2Slogan: '"Fare İmleci Elinin Altında Akıp Gitsin"',
+                f2Desc: "Klavye/fare gecikmelerini ve donanımsal kesme sürelerini (DPC) minimize eder. İşlemci zamanlayıcısını (HPET iptali) espor standartlarına zorlar.",
+                f3Title: "Kernel Memory & RAM Arındırıcı",
+                f3Slogan: '"Windows Arka Planda RAM Çalmasın"',
+                f3Desc: "Windows'un hantal disk sayfalama (Pagefile) mekanizmasını RAM için durdurur. Bellekteki standby listelerini otomatik süpürerek oyuna maksimum alan açar.",
+                f4Title: "Anti-Stutter & Core Parking Defeater",
+                f4Slogan: '"Aksiyon Sahnelerinde Anlık Droplara Elveda"',
+                f4Desc: "Aksiyon esnasında işlemci çekirdeklerinin uyku moduna (C-State) geçmesini engeller. Tüm çekirdekleri %100 tetikte tutarak %1 ve %0.1 low FPS düşüşlerini tamamen bıçak gibi keser.",
+                targetTitle: "Kimin İçin Tasarlandı?",
+                targetSubtitle: "Kinux Playbook hangi sorunları kökten çözer?",
+                t1Title: "🏆 Rekabetçi Oyuncular",
+                t1Desc: "CS2, Valorant, Minecraft veya Roblox (Sober) gibi milisaniyelerin ve mermi kayıtlarının kritik olduğu arenalarda en kararlı tepki süresini arayanlar.",
+                t2Title: "💻 Donanım Sınırlarını Zorlayanlar",
+                t2Desc: "Windows Defender'ın ağır disk kilitleri ve arka plan telemetri servisleri yüzünden anlık takılma (stutter) yaşayan tüm sistemler için.",
+                t3Title: "⚡ Saf Performans Tutkunları",
+                t3Desc: "Sisteminde hiçbir reklam, bloatware veya gereksiz arka plan Xbox servisi istemeyen, en temiz Windows deneyimine odaklananlar için.",
+                navCta: "İletişime Geç"
+            },
+            EN: {
+                badge: "✨ Non-Destructive Tweak Technology",
+                heroTitle: "Lighten Your System. <br><span class='bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent'>Zero the Latency.</span>",
+                heroDesc: "No more ISO installation or data loss risks. Kinux Playbook removes all background bloatware without breaking your current Windows and optimizes your OS to esports standards.",
+                priceLabel: "LIFETIME LICENSE & UPDATES",
+                linksTitle: "PROJECT LINKS & PURCHASE",
+                panelTitle: "System Engine Stream",
+                panelStatus: "● Fully Ready for Optimization",
+                stat1: "Input Latency",
+                stat2: "Unnecessary Services",
+                stat3: "Network Profile / UDP",
+                diffTitle: "What is Our Difference?",
+                diffSubtitle: "Why choose Kinux Engine instead of heavy, custom Windows ISOs?",
+                diff1Title: "Zero Security Risk",
+                diff1Desc: "Contains no hidden files like modified custom ISOs. It is entirely Windows-native, transparent, and built on verifiable scripts.",
+                diff2Title: "No Reinstall Required",
+                diff2Desc: "No need to format your system or reinstall games. Injects in seconds safely without bricking your active operating system.",
+                diff3Title: "Directly Esports-Focused",
+                diff3Desc: "Doesn't just wipe junk like basic cleaning apps; it actively tunes UDP streams, kernel interrupts (DPC), and input hardware latency.",
+                featuresTitle: "Flawless Premium Modules",
+                featuresSubtitle: "Monster tweaks to be injected into your core system OS.",
+                f1Title: "Network Core & UDP Killer",
+                f1Slogan: '"Register Your Bullets in Milliseconds"',
+                f1Desc: "Kills TCP Nagle algorithm, forces CTCP congestion control, and expands UDP buffer margins to eliminate in-game jitter and packet loss.",
+                f2Title: "DPC Latency & Input Lag Engine",
+                f2Slogan: '"Let the Mouse Glide Seamlessly under Your Hand"',
+                f2Desc: "Minimizes keyboard/mouse polling latency and DPC spikes. Locks the platform clock timer (HPET disable) into absolute tournament configurations.",
+                f3Title: "Kernel Memory & RAM Purifier",
+                f3Slogan: '"Stop Windows from Stealing Active RAM Cache"',
+                f3Desc: "Prevents Windows from swapping critical memory pages onto slow disks. Automatically flushes standby lists to allocate max memory to games.",
+                f4Title: "Anti-Stutter & Core Parking Defeater",
+                f4Slogan: '"Say Goodbye to Frametime Spikes During Teamfights"',
+                f4Desc: "Blocks CPU cores from falling into low-power sleep cycles (C-States). Keeps all threads 100% alert to lock down 1% and 0.1% low FPS marks.",
+                targetTitle: "Who is this Designed For?",
+                targetSubtitle: "What root issues does Kinux Playbook solve completely?",
+                t1Title: "🏆 Competitive Gamers",
+                t1Desc: "For those looking for absolute stability in titles like CS2, Valorant, Minecraft, or Roblox (Sober) where milliseconds matter.",
+                t2Title: "💻 Hardware Maximizers",
+                t2Desc: "For mid-to-low tier devices experiencing sudden hitching due to heavy Windows Defender background locks and telemetry tasks.",
+                t3Title: "⚡ Pure Performance Purists",
+                t3Desc: "For those who want zero ads, no bloatware, and absolutely no background Xbox services cluttering up their digital real estate.",
+                navCta: "Contact Us"
+            }
+        };
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'TR' ? 'EN' : 'TR';
+            langToggleBtn.innerText = currentLang === 'TR' ? 'EN' : 'TR';
+
+            const data = translations[currentLang];
+            document.getElementById('badge-text').innerText = data.badge;
+            document.getElementById('hero-title').innerHTML = data.heroTitle;
+            document.getElementById('hero-desc').innerText = data.heroDesc;
+            document.getElementById('price-label').innerText = data.priceLabel;
+            document.getElementById('links-title').innerText = data.linksTitle;
+            document.getElementById('panel-title').innerText = data.panelTitle;
+            document.getElementById('panel-status').innerText = data.panelStatus;
+            document.getElementById('stat-1').innerText = data.stat1;
+            document.getElementById('stat-2').innerText = data.stat2;
+            document.getElementById('stat-3').innerText = data.stat3;
+            document.getElementById('diff-title').innerText = data.diffTitle;
+            document.getElementById('diff-subtitle').innerText = data.diffSubtitle;
+            document.getElementById('diff-1-title').innerText = data.diff1Title;
+            document.getElementById('diff-1-desc').innerText = data.diff1Desc;
+            document.getElementById('diff-2-title').innerText = data.diff2Title;
+            document.getElementById('diff-2-desc').innerText = data.diff2Desc;
+            document.getElementById('diff-3-title').innerText = data.diff3Title;
+            document.getElementById('diff-3-desc').innerText = data.diff3Desc;
+            document.getElementById('features-title').innerText = data.featuresTitle;
+            document.getElementById('features-subtitle').innerText = data.featuresSubtitle;
+            document.getElementById('f1-title').innerText = data.f1Title;
+            document.getElementById('f1-slogan').innerText = data.f1Slogan;
+            document.getElementById('f1-desc').innerText = data.f1Desc;
+            document.getElementById('f2-title').innerText = data.f2Title;
+            document.getElementById('f2-slogan').innerText = data.f2Slogan;
+            document.getElementById('f2-desc').innerText = data.f2Desc;
+            document.getElementById('f3-title').innerText = data.f3Title;
+            document.getElementById('f3-slogan').innerText = data.f3Slogan;
+            document.getElementById('f3-desc').innerText = data.f3Desc;
+            document.getElementById('f4-title').innerText = data.f4Title;
+            document.getElementById('f4-slogan').innerText = data.f4Slogan;
+            document.getElementById('f4-desc').innerText = data.f4Desc;
+            document.getElementById('target-title').innerText = data.targetTitle;
+            document.getElementById('target-subtitle').innerText = data.targetSubtitle;
+            document.getElementById('t1-title').innerText = data.t1Title;
+            document.getElementById('t1-desc').innerText = data.t1Desc;
+            document.getElementById('t2-title').innerText = data.t2Title;
+            document.getElementById('t2-desc').innerText = data.t2Desc;
+            document.getElementById('t3-title').innerText = data.t3Title;
+            document.getElementById('t3-desc').innerText = data.t3Desc;
+            document.getElementById('nav-cta').innerText = data.navCta;
+        });
+
+        // Dark / Light Theme Toggle Script
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                document.body.classList.replace('bg-[#08090c]', 'bg-[#f4f5f7]');
+                document.body.classList.replace('text-[#f3f4f6]', 'text-[#1e293b]');
+                themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.22 4.22l1.58 1.58m12.42 12.42l1.58 1.58M3 12h2.25m13.5 0H21M4.22 19.78l1.58-1.58M17.66 6.34l1.58-1.58M12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z" />`;
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                document.body.classList.replace('bg-[#f4f5f7]', 'bg-[#08090c]');
+                document.body.classList.replace('text-[#1e293b]', 'text-[#f3f4f6]');
+                themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />`;
+            }
+        });
+    </script>
+</body>
+</html>
