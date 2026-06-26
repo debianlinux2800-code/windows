@@ -23,30 +23,37 @@
     <div class="absolute top-[25%] right-[-10%] w-[800px] h-[800px] rounded-full bg-cyan-500/4 blur-[180px] pointer-events-none"></div>
     <div class="absolute bottom-[20%] left-[10%] w-[600px] h-[600px] rounded-full bg-pink-500/3 blur-[160px] pointer-events-none"></div>
 
-    <!-- Header / Nav -->
+   <!-- Header / Nav -->
     <header class="sticky top-0 z-50 max-w-7xl mx-auto px-6 py-5">
         <nav class="flex items-center justify-between border border-white/5 bg-[#0e1117]/50 glass px-6 py-4 rounded-2xl shadow-2xl shadow-black/20">
+            
+            <!-- Logo kısmı doğru kapatıldı -->
             <div class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.5)]"></span>
                 KINUX<span class="text-xs font-normal opacity-50 font-mono">.pb</span>
+            </div>
+
+            <!-- Butonlar ayrı bir div içinde -->
             <div class="flex items-center gap-4">
-    <!-- Dil Seçimi Butonu -->
-    <button id="lang-toggle" class="px-3 py-1.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-xs font-semibold font-mono tracking-wider transition cursor-pointer">
-        EN
-    </button>
-    <button id="theme-toggle" class="p-2 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition cursor-pointer">
-        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4.5 h-4.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-        </svg>
-    </button>
-    
-    <!-- WIKI Linkini buraya ekledik -->
-    <a href="https://kinuxproject.onrender.com/wiki" target="_blank" class="px-3 py-1.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-xs font-semibold font-mono tracking-wider transition cursor-pointer">
-        WIKI
-    </a>
-    
-    <a href="https://t.me/kinuxproject" target="_blank" id="nav-cta" class="px-5 py-2 bg-white text-black font-semibold rounded-xl text-xs hover:opacity-90 transition shadow-md">İletişime Geç</a>
-</div>
+                <!-- Dil Seçimi Butonu -->
+                <button id="lang-toggle" class="px-3 py-1.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-xs font-semibold font-mono tracking-wider transition cursor-pointer">
+                    EN
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition cursor-pointer">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4.5 h-4.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                </button>
+                
+                <!-- WIKI Linki -->
+                <a href="https://kinuxproject.onrender.com/wiki" target="_blank" class="px-3 py-1.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 text-xs font-semibold font-mono tracking-wider transition cursor-pointer">
+                    WIKI
+                </a>
+                
+                <a href="https://t.me/kinuxproject" target="_blank" id="nav-cta" class="px-5 py-2 bg-white text-black font-semibold rounded-xl text-xs hover:opacity-90 transition shadow-md">İletişime Geç</a>
+            </div>
+        </nav>
+    </header>
 
     <main class="max-w-7xl mx-auto px-6 py-6 relative z-10">
         
